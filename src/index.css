@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'ProKitsCustom';
+  src: url('./assets/fonts/6598cf716b109bbe-s.p.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-custom {
+  font-family: 'ProKitsCustom', sans-serif;
+}
