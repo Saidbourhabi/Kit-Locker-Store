@@ -1,7 +1,7 @@
 import React from 'react';
 // Import placeholders for store and owner images (to be updated later)
 // import storeImg from '../../assets/images/store.jpg';
-// import ownerImg from '../../assets/images/owner.jpg';
+import ownerImg from '../../assets/images/ayoubSassi.JPG';
 
 const About = () => {
   return (
@@ -59,10 +59,8 @@ const About = () => {
             <div className="flex flex-col items-center md:items-start h-full gap-6">
               <h2 className="text-4xl font-custom font-bold text-white mb-6">Meet Our Founder</h2>
               
-              {/* Owner Image Placeholder */}
-              <div className="w-48 h-48 bg-white/10 border border-white/20 flex items-center justify-center">
-                <span className="text-white/60 font-custom text-center">Owner Image</span>
-              </div>
+              {/* Owner Image */}
+              <img src={ownerImg} alt="Ayoub Sassi" className="w-48 h-48 object-cover  border-4 border-white mb-4" />
               
               <div className="space-y-6">
                 <div>

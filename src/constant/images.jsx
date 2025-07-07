@@ -24,7 +24,11 @@ import wh3 from '../assets/images/westHam3.jpg';
 
 import Fcbarca from '../assets/images/FcBarca.jpg';
 
+// owner image & Store img
+import ab from '../assets/images/ayoubsassi.jpg';
+
 export default {
+    ab,
     manunited,
     logo,
     // Fcbarca
