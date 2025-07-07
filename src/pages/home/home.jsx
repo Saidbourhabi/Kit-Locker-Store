@@ -165,7 +165,7 @@ const Home = () => {
                     <div ref={imageRef} className="w-full lg:w-1/2 p-8 lg:p-12 flex items-center justify-center">
                         <div className="relative w-full max-w-md">
                             <motion.img 
-                                src={manunite} 
+                    src={manunite} 
                                 alt="Manchester United Jersey" 
                                 className="w-full h-auto object-cover border border-white shadow-2xl"
                                 initial={{ opacity: 0, scale: 0.8 }}

@@ -209,18 +209,18 @@ const Shop = () => {
   return (
     <div className="min-h-screen bg-black flex flex-col items-center pt-24 sm:pt-28 md:pt-32 pb-16 px-2">
       {/* Headline */}
-      <div className="w-full max-w-6xl mx-auto flex flex-col items-center mb-10">
+      <div className="w-full max-w-6xl mx-auto flex flex-col items-center mb-10 px-2 sm:px-0">
         <h1 className="font-custom text-5xl md:text-7xl font-extrabold text-white text-center uppercase pt-15 mb-12">OUR STORE</h1>
       </div>
-      {/* Main content: Filter bar left, grid right */}
-      <div className="w-full max-w-6xl mx-auto flex flex-row gap-8">
-        {/* Filter Bar (vertical, left) */}
-        <div className="flex flex-col gap-4 min-w-[180px]">
+      {/* Main content: Filter bar top on mobile, grid below */}
+      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row gap-8">
+        {/* Filter Bar (horizontal on mobile, vertical on desktop) */}
+        <div className="flex flex-row md:flex-col gap-4 md:min-w-[180px] mb-6 md:mb-0 justify-center md:justify-start">
           {FILTERS.map(f => (
             <button
               key={f.value}
               onClick={() => setFilter(f.value)}
-              className={`px-6 py-2 font-custom font-bold border-2 transition-colors duration-200 text-lg ${filter === f.value ? 'bg-white text-black border-white' : 'bg-black text-white border-white hover:bg-white hover:text-black'}`}
+              className={`px-4 py-2 font-custom font-bold border-2 transition-colors duration-200 text-base md:text-lg rounded-none ${filter === f.value ? 'bg-white text-black border-white' : 'bg-black text-white border-white hover:bg-white hover:text-black'}`}
             >
               {f.label}
             </button>
@@ -228,7 +228,7 @@ const Shop = () => {
         </div>
         {/* Product Grid */}
         <div className="flex-1">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 sm:gap-x-8 sm:gap-y-12">
             {filteredProducts.slice(0, visibleCount).map((product, idx) => (
               <div key={product.id} className="relative h-full flex flex-col">
                 <Link to={`/product/${product.id}`} className="block h-full">
@@ -239,12 +239,15 @@ const Shop = () => {
           </div>
           {/* View More Button */}
           {visibleCount < filteredProducts.length && (
-            <button
-              onClick={() => setVisibleCount(c => c + 6)}
-              className="mt-12 px-10 py-3 font-custom font-bold bg-white text-black border-2 border-white hover:bg-black hover:text-white transition-colors duration-200 text-xl shadow-lg"
-            >
-              View More
-            </button>
+            <div className="flex justify-center w-full mt-8 sm:mt-12">
+              <button
+                onClick={() => setVisibleCount(c => c + 6)}
+                className="px-8 sm:px-10 py-3 font-custom font-bold bg-white text-black border-2 border-white hover:bg-black hover:text-white transition-colors duration-200 text-lg sm:text-xl shadow-lg"
+                style={{ width: 'fit-content' }}
+              >
+                View More
+              </button>
+            </div>
           )}
         </div>
       </div>
@@ -263,23 +266,23 @@ const ShopCard = ({ product, addToCart, previewOnly }) => {
   };
 
   return (
-    <form onSubmit={handleAddToCart} className="w-full max-w-xs h-[480px] bg-white shadow-2xl flex flex-col items-center p-0 overflow-hidden border border-black/10 mx-auto">
-      <div className="w-full h-64 bg-black flex items-center justify-center overflow-hidden">
+    <form onSubmit={handleAddToCart} className="w-full max-w-xs sm:max-w-sm h-[440px] sm:h-[480px] bg-white shadow-2xl flex flex-col items-center p-0 overflow-hidden border border-black/10 mx-auto rounded-none mb-4 sm:mb-0">
+      <div className="w-full h-56 sm:h-64 bg-black flex items-center justify-center overflow-hidden">
         <img src={product.images[0]} alt={product.name} className="object-cover object-center w-full h-full" />
       </div>
-      <div className="w-full flex flex-col items-center px-8 py-6 flex-1">
-        <h2 className="text-2xl md:text-3xl font-custom font-extrabold text-black mb-2 text-center tracking-wide uppercase">{product.name}</h2>
-        <p className="mb-4 font-custom text-gray-700 text-center">{product.description}</p>
-        <div className="mb-4 font-custom text-2xl font-bold text-black">{product.price.toFixed(2)} MAD</div>
+      <div className="w-full flex flex-col items-center px-4 sm:px-8 py-4 sm:py-6 flex-1">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-custom font-extrabold text-black mb-2 text-center tracking-wide uppercase">{product.name}</h2>
+        <p className="mb-2 sm:mb-4 font-custom text-gray-700 text-center text-sm sm:text-base">{product.description}</p>
+        <div className="mb-2 sm:mb-4 font-custom text-xl sm:text-2xl font-bold text-black">{product.price.toFixed(2)} MAD</div>
         {!previewOnly && <>
           {/* Only show quantity selector */}
-          <div className="mb-4 flex gap-4 items-center justify-center w-full">
+          <div className="mb-2 sm:mb-4 flex gap-4 items-center justify-center w-full">
             <label className="font-custom text-black">Qty:</label>
             <input type="number" min={1} value={qty} onChange={e => setQty(Number(e.target.value))} className="font-custom text-black px-3 py-2 border border-black/20 focus:border-black outline-none w-20" />
           </div>
           <button
             type="submit"
-            className="w-full py-3 bg-black text-white font-custom font-bold border border-black hover:bg-white hover:text-black transition-colors duration-200 text-lg shadow-md"
+            className="w-full py-3 bg-black text-white font-custom font-bold border border-black hover:bg-white hover:text-black transition-colors duration-200 text-base sm:text-lg shadow-md"
           >
             Add to Cart
           </button>
