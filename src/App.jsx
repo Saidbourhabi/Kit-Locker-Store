@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/home/home';
 import Navbar, { CartContext } from './layout/Navbar';
@@ -11,7 +11,11 @@ import ProductDetail from './pages/shop/ProductDetail';
 import WhatsAppButton from './components/WhatsAppButton';
 
 const App = () => {
-  const [cartItems, setCartItems] = useState([]);
+  // Load cart from localStorage if available
+  const [cartItems, setCartItems] = useState(() => {
+    const stored = localStorage.getItem('cartItems');
+    return stored ? JSON.parse(stored) : [];
+  });
   const cartCount = cartItems.reduce((sum, item) => sum + item.qty, 0);
   const addToCart = (item) => {
     setCartItems((prev) => {
@@ -24,6 +28,11 @@ const App = () => {
       return [...prev, item];
     });
   };
+
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   return (
     <CartContext.Provider value={{ cartItems, cartCount, addToCart, setCartItems }}>

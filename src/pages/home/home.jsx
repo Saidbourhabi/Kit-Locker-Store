@@ -112,7 +112,7 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-black pt-24 sm:pt-28 md:pt-32 px-4 flex flex-col items-center justify-center">
+        <div className="min-h-screen bg-black pt-24 sm:pt-28 md:pt-32 px-4 flex flex-col items-center justify-center overflow-x-hidden">
             {/* Main Hero Container */}
             <div ref={heroRef} className="w-[90%] max-w-6xl bg-black border border-white shadow-2xl mb-16 relative px-2 sm:px-8">
                 {/* Circular Text in Corner */}
