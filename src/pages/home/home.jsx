@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { FaFacebook, FaInstagram, FaEnvelope, FaPhone, FaCheckCircle, FaTruck, FaHeadset, FaChevronDown } from 'react-icons/fa';
 import { SiThreads } from 'react-icons/si';
 import { BsTwitterX } from 'react-icons/bs';
@@ -65,6 +66,7 @@ const Home = () => {
     const circularTextRef = useRef(null);
     const [openIndex, setOpenIndex] = useState(null);
     const { addToCart } = useCart();
+    const sectionHeadlineGroups = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
 
     useEffect(() => {
         // GSAP animations
@@ -91,6 +93,26 @@ const Home = () => {
             "-=0.3"
         );
 
+        // Animate section headline groups (accent line + headline)
+        sectionHeadlineGroups.forEach((ref) => {
+            if (ref.current) {
+                gsap.fromTo(ref.current,
+                    { x: -80, opacity: 0 },
+                    {
+                        x: 0,
+                        opacity: 1,
+                        duration: 0.9,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: ref.current,
+                            start: "top 80%",
+                            toggleActions: "play none none none"
+                        }
+                    }
+                );
+            }
+        });
+
         // Hover animations for buttons
         const buttons = document.querySelectorAll('.hero-btn');
         buttons.forEach(btn => {
@@ -114,11 +136,11 @@ const Home = () => {
     return (
         <div className="min-h-screen bg-black pt-24 sm:pt-28 md:pt-32 px-4 flex flex-col items-center justify-center overflow-x-hidden">
             {/* Main Hero Container */}
-            <div ref={heroRef} className="w-[90%] max-w-6xl bg-black border border-white shadow-2xl mb-16 relative px-2 sm:px-8">
+            <div ref={heroRef} className="w-[90%] max-w-6xl bg-black mb-16 relative px-2 sm:px-8">
                 {/* Circular Text in Corner */}
                 <div ref={circularTextRef} className="absolute top-8 right-8 z-40 hidden lg:block">
                     <CircularText
-                        text="PRO*KITS*ROSTER*"
+                        text="THE*KIT*LOCKER*"
                         onHover="speedUp"
                         spinDuration={25}
                         className="w-32 h-32"
@@ -177,9 +199,15 @@ const Home = () => {
                 </div>
             </div>
 
+            {/* Horizontal line */}
+            <div className="w-[90%] max-w-6xl border-t border-white/20 my-8" />
+
             {/* Carousel Section */}
-            <div className="w-[90%] max-w-6xl bg-black border border-white shadow-2xl mb-16 py-12 px-2 sm:px-8">
-                <h2 className="text-3xl sm:text-4xl font-custom font-bold text-white mb-8 text-center">Featured Jerseys</h2>
+            <div className="w-[90%] max-w-6xl bg-black mb-16 py-12 px-2 sm:px-8">
+                <div ref={sectionHeadlineGroups[0]} className="flex items-center mb-8 opacity-0">
+                    <div className="h-10 w-1 bg-white mr-4 rounded" />
+                    <h2 className="text-3xl sm:text-4xl font-custom font-bold text-white">Featured Jerseys</h2>
+                </div>
                 <Swiper
                     modules={[Navigation]}
                     spaceBetween={32}
@@ -262,12 +290,16 @@ const Home = () => {
                 </div>
             </div>
 
+            {/* Horizontal line */}
+            <div className="w-[90%] max-w-6xl border-t border-white/20 my-8" />
+
             {/* Additional Features Section */}
-            <div className="w-[90%] max-w-6xl bg-black border border-white shadow-2xl mb-16 px-2 sm:px-8">
+            <div className="w-[90%] max-w-6xl bg-black mb-16 px-2 sm:px-8">
                 <div className="p-8">
-                    <h2 className="text-3xl font-custom font-bold text-white text-center mb-8">
-                        Why Choose ProKits?
-                    </h2>
+                    <div ref={sectionHeadlineGroups[1]} className="flex items-center mb-8 opacity-0">
+                        <div className="h-10 w-1 bg-white mr-4 rounded" />
+                        <h2 className="text-3xl font-custom font-bold text-white">Why Choose ProKits?</h2>
+                    </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <motion.div 
                             className="text-center"
@@ -314,13 +346,18 @@ const Home = () => {
                 </div>
             </div>
 
+            {/* Horizontal line */}
+            <div className="w-[90%] max-w-6xl border-t border-white/20 my-8" />
+
             {/* FAQ Section */}
-            <div className="w-[90%] max-w-6xl bg-black border border-white shadow-2xl mb-16 px-2 sm:px-8">
+            <div className="w-[90%] max-w-6xl bg-black mb-16 px-2 sm:px-8">
                 <div className="p-8 md:p-12 flex flex-col md:flex-row gap-8">
-                    {/* Left Side: FAQ Title and Contact */}
                     <div className="md:w-1/2 flex flex-col justify-center">
                         <span className="bg-white/10 text-white font-custom font-bold px-4 py-2 mb-4 w-fit">FAQS</span>
-                        <h2 className="text-3xl sm:text-4xl font-custom font-bold text-white mb-4">Frequently Asked Questions</h2>
+                        <div ref={sectionHeadlineGroups[2]} className="flex items-center mb-8 opacity-0">
+                            <div className="h-10 w-1 bg-white mr-4 rounded" />
+                            <h2 className="text-3xl sm:text-4xl font-custom font-bold text-white">Frequently Asked Questions</h2>
+                        </div>
                         <p className="text-white/70 font-custom mb-6">If you didn't find an answer to your question here, you can contact us</p>
                         <Link to="/contact" className="w-fit px-8 py-3 bg-red-600 text-white font-custom font-bold border border-white hover:bg-black hover:text-white transition-colors duration-200 text-center rounded-none">Contact Us</Link>
                     </div>
@@ -348,9 +385,15 @@ const Home = () => {
                 </div>
             </div>
 
+            {/* Horizontal line */}
+            <div className="w-[90%] max-w-6xl border-t border-white/20 my-8" />
+
             {/* Testimonials Section */}
-            <div className="w-[90%] max-w-6xl bg-black border border-white shadow-2xl mb-16 py-12 px-2 sm:px-8">
-                <h2 className="text-3xl sm:text-4xl font-custom font-bold text-white mb-8 text-center">Testimonials</h2>
+            <div className="w-[90%] max-w-6xl bg-black mb-16 py-12 px-2 sm:px-8">
+                <div ref={sectionHeadlineGroups[3]} className="flex items-center mb-8 opacity-0">
+                    <div className="h-10 w-1 bg-white mr-4 rounded" />
+                    <h2 className="text-3xl sm:text-4xl font-custom font-bold text-white">Testimonials</h2>
+                </div>
                 <SwiperTestimonials
                     modules={[Autoplay, NavigationTestimonials]}
                     spaceBetween={32}
@@ -384,10 +427,16 @@ const Home = () => {
                 </div>
             </div>
 
-                        {/* Follow Us Section */}
-            <div className="w-[90%] max-w-6xl bg-black border border-white shadow-2xl mb-16 px-2 sm:px-8">
+            {/* Horizontal line */}
+            <div className="w-[90%] max-w-6xl border-t border-white/20 my-8" />
+
+            {/* Follow Us Section */}
+            <div className="w-[90%] max-w-6xl bg-black mb-16 px-2 sm:px-8">
                 <div className="p-8 flex flex-col items-center">
-                    <h2 className="text-2xl font-custom font-bold text-white mb-4">Follow Us</h2>
+                    <div ref={sectionHeadlineGroups[4]} className="flex items-center mb-8 opacity-0">
+                        <div className="h-10 w-1 bg-white mr-4 rounded" />
+                        <h2 className="text-2xl font-custom font-bold text-white">Follow Us</h2>
+                    </div>
                     <div className="flex gap-6 justify-center">
                         <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-500 transition-colors duration-200 text-3xl font-custom" aria-label="Instagram">
                             <FaInstagram />
