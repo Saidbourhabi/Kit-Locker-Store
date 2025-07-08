@@ -22,4 +22,22 @@ body {
 @keyframes marquee {
   0% { transform: translateX(100%); }
   100% { transform: translateX(-100%); }
+}
+
+.custom-scrollbar-x {
+  scrollbar-width: thin;              /* Firefox */
+  scrollbar-color: #fff #000;         /* Firefox: thumb is white, track is black */
+}
+
+.custom-scrollbar-x::-webkit-scrollbar {
+  height: 8px;                        /* horizontal scrollbar height */
+  background: #000;                   /* track color (black) */
+  border-radius: 8px;
+}
+.custom-scrollbar-x::-webkit-scrollbar-thumb {
+  background: #fff;                   /* thumb color (white) */
+  border-radius: 8px;
+}
+.custom-scrollbar-x::-webkit-scrollbar-thumb:hover {
+  background: #fff;
 } 

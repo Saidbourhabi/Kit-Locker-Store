@@ -29,24 +29,24 @@ const Navbar = () => {
       <FreeShippingBar />
       <nav className={`fixed top-6 sm:top-7 md:top-8 left-0 w-full z-50 border-b border-black/10 shadow-sm transition-colors duration-300 ${scrolled ? 'bg-white/70 backdrop-blur-md' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16 sm:h-18 md:h-20">
-          {/* Logo */}
-          <div className="flex items-center">
+        {/* Logo */}
+        <div className="flex items-center">
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-black rounded-full flex items-center justify-center mr-4">
-              {/* Placeholder for logo, update src later */}
+            {/* Placeholder for logo, update src later */}
               <span className="text-white text-xl sm:text-2xl font-bold font-custom">PK</span>
             </div>
           </div>
 
           {/* Desktop Nav Links + Cart */}
           <div className="hidden lg:flex items-center gap-10 ml-auto">
-            <NavLink to="/" label="Home" />
-            <NavLink to="/shop" label="Store" />
-            <NavLink to="/about" label="About Us" />
-            <NavLink to="/contact" label="Contact Us" />
-            <Link to="/cart" className="relative flex items-center group ml-8">
-              <RiShoppingBasketLine className="text-2xl text-black" />
-              <span className="ml-2 text-black font-custom font-bold">({cartCount})</span>
-            </Link>
+          <NavLink to="/" label="Home" />
+          <NavLink to="/shop" label="Store" />
+          <NavLink to="/about" label="About Us" />
+          <NavLink to="/contact" label="Contact Us" />
+          <Link to="/cart" className="relative flex items-center group ml-8">
+            <RiShoppingBasketLine className="text-2xl text-black" />
+            <span className="ml-2 text-black font-custom font-bold">({cartCount})</span>
+          </Link>
           </div>
 
           {/* Mobile Cart Icon */}
@@ -91,10 +91,10 @@ const Navbar = () => {
               <MobileNavLink to="/shop" label="Store" onClick={() => setMobileMenuOpen(false)} />
               <MobileNavLink to="/about" label="About Us" onClick={() => setMobileMenuOpen(false)} />
               <MobileNavLink to="/contact" label="Contact Us" onClick={() => setMobileMenuOpen(false)} />
-            </div>
-          </div>
+        </div>
+      </div>
         )}
-      </nav>
+    </nav>
     </>
   );
 };

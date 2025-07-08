@@ -19,6 +19,18 @@ import { Autoplay, Navigation as NavigationTestimonials } from 'swiper/modules';
 // Import jersey images
 import manunite from '../../assets/images/manunited.jpg';
 import { FaWhatsapp } from 'react-icons/fa';
+import bundesligaLogo from '../../assets/images/bundesliga-logo.jpg';
+import premierLeagueLogo from '../../assets/images/bundesliga-logo.jpg';
+import laLigaLogo from '../../assets/images/bundesliga-logo.jpg';
+import serieALogo from '../../assets/images/bundesliga-logo.jpg';
+import ligue1Logo from '../../assets/images/bundesliga-logo.jpg';
+import championsLeagueLogo from '../../assets/images/bundesliga-logo.jpg';
+import englandFlag from '../../assets/images/bundesliga-logo.jpg';
+import spainFlag from '../../assets/images/bundesliga-logo.jpg';
+import italyFlag from '../../assets/images/bundesliga-logo.jpg';
+import franceFlag from '../../assets/images/bundesliga-logo.jpg';
+import germanyFlag from '../../assets/images/bundesliga-logo.jpg';
+import moroccoFlag from '../../assets/images/bundesliga-logo.jpg';
 
 const FAQS = [
 {
@@ -66,7 +78,7 @@ const Home = () => {
     const circularTextRef = useRef(null);
     const [openIndex, setOpenIndex] = useState(null);
     const { addToCart } = useCart();
-    const sectionHeadlineGroups = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
+    const sectionHeadlineGroups = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
 
     useEffect(() => {
         // GSAP animations
@@ -287,6 +299,64 @@ const Home = () => {
                 <div className="flex justify-center gap-8 mt-8">
                     <button className="swiper-prev-btn px-6 py-2 bg-white text-black font-custom font-bold border border-white hover:bg-black hover:text-white transition-colors duration-200">Prev</button>
                     <button className="swiper-next-btn px-6 py-2 bg-white text-black font-custom font-bold border border-white hover:bg-black hover:text-white transition-colors duration-200">Next</button>
+                </div>
+            </div>
+
+            {/* Horizontal line */}
+            <div className="w-[90%] max-w-6xl border-t border-white/20 my-8" />
+
+            {/* Our Collections By Country Section */}
+            <div className="w-[90%] max-w-6xl bg-black mb-16 py-12 px-2 sm:px-8">
+                <div ref={sectionHeadlineGroups[5]} className="flex items-center mb-8 opacity-0">
+                    <div className="h-10 w-1 bg-white mr-4 rounded" />
+                    <h2 className="text-3xl sm:text-4xl font-custom font-bold text-white">Our Collections By Country</h2>
+                </div>
+                {/* Country flags grid - revert to simple horizontal scroll */}
+                <div className="flex overflow-x-auto gap-6 pb-2 mb-10">
+                    {/* Country flags - edit or add more imports above as needed */}
+                    <div className="flex flex-col items-center flex-shrink-0">
+                        <img src={englandFlag} alt="England" className="w-16 h-16 object-contain mb-2 border border-white" />
+                        <span className="text-white font-custom text-sm">England</span>
+                    </div>
+                    <div className="flex flex-col items-center flex-shrink-0">
+                        <img src={spainFlag} alt="Spain" className="w-16 h-16 object-contain mb-2 border border-white" />
+                        <span className="text-white font-custom text-sm">Spain</span>
+                    </div>
+                    <div className="flex flex-col items-center flex-shrink-0">
+                        <img src={italyFlag} alt="Italy" className="w-16 h-16 object-contain mb-2 border border-white" />
+                        <span className="text-white font-custom text-sm">Italy</span>
+                    </div>
+                    <div className="flex flex-col items-center flex-shrink-0">
+                        <img src={franceFlag} alt="France" className="w-16 h-16 object-contain mb-2 border border-white" />
+                        <span className="text-white font-custom text-sm">France</span>
+                    </div>
+                    <div className="flex flex-col items-center flex-shrink-0">
+                        <img src={germanyFlag} alt="Germany" className="w-16 h-16 object-contain mb-2 border border-white" />
+                        <span className="text-white font-custom text-sm">Germany</span>
+                    </div>
+                    <div className="flex flex-col items-center flex-shrink-0">
+                        <img src={moroccoFlag} alt="Morocco" className="w-16 h-16 object-contain mb-2 border border-white" />
+                        <span className="text-white font-custom text-sm">Morocco</span>
+                    </div>
+                    {/* Add more countries as needed */}
+                </div>
+                {/* Leagues of All Football World - Horizontal Scroll Row */}
+                <div className="mb-4">
+                    <h3 className="text-xl font-custom font-bold text-white mb-4">Leagues of All Football World</h3>
+                    {/* League logos row - revert to simple horizontal scroll */}
+                    <div className="flex overflow-x-auto gap-6 pb-2">
+                        {/* League logos - edit or add more imports above as needed */}
+                        <img src={bundesligaLogo} alt="Bundesliga" className="h-12 object-contain bg-white rounded p-2 border border-black" />
+                        <img src={premierLeagueLogo} alt="Premier League" className="h-12 object-contain bg-white rounded p-2 border border-black" />
+                        <img src={laLigaLogo} alt="La Liga" className="h-12 object-contain bg-white rounded p-2 border border-black" />
+                        <img src={serieALogo} alt="Serie A" className="h-12 object-contain bg-white rounded p-2 border border-black" />
+                        <img src={ligue1Logo} alt="Ligue 1" className="h-12 object-contain bg-white rounded p-2 border border-black" />
+                        <img src={championsLeagueLogo} alt="Champions League" className="h-12 object-contain bg-white rounded p-2 border border-black" />
+                        <img src={championsLeagueLogo} alt="Champions League" className="h-12 object-contain bg-white rounded p-2 border border-black" />
+                        <img src={championsLeagueLogo} alt="Champions League" className="h-12 object-contain bg-white rounded p-2 border border-black" />
+                        {/* Add more league logos here as needed */}
+                    </div>
+                    {/* End of league logos row */}
                 </div>
             </div>
 

@@ -27,6 +27,10 @@ import Fcbarca from '../assets/images/FcBarca.jpg';
 // owner image & Store img
 import ab from '../assets/images/ayoubsassi.jpg';
 
+// league images
+
+import bundesliga from '../assets/images/bundesliga-logo.jpg';
+
 export default {
     ab,
     manunited,
@@ -51,5 +55,5 @@ export default {
     wh,
     wh2,
     wh3,
-    
+    bundesliga,
 }
